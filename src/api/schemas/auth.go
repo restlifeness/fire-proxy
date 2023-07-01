@@ -5,13 +5,13 @@ type RequestAuthForm struct {
 	Password string `form:"password" json:"password" binding:"required"`
 }
 
-type BearerToken struct {
+type ResponseToken struct {
 	Token string `json:"token" binding:"required"`
 	Type  string `json:"type"`
 }
 
-func NewBearerToken(token string) *BearerToken {
-	return &BearerToken{
+func NewBearerToken(token string) *ResponseToken {
+	return &ResponseToken{
 		Token: token,
 		Type:  "Bearer",
 	}
