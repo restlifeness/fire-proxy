@@ -25,7 +25,7 @@ class User(BaseModel):
 
     uuid = Column(String(36), unique=True, nullable=False)
     username = Column(String(50), unique=True, nullable=False)
-    password = Column(String(50), nullable=False)
+    hashed_password = Column(Text, nullable=False)
     email = Column(String(50), unique=True, nullable=False)
 
     is_active = Column(Boolean, default=True)
