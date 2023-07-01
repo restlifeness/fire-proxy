@@ -41,7 +41,7 @@ class Proxy(BaseModel):
     address = Column(String(50), nullable=False)
     port = Column(Integer, nullable=False)
 
-    stil_alive = Column(Boolean, default=True)
+    still_alive = Column(Boolean, default=True)
 
     def __repr__(self):
         return f'<ProxyConnection {self.user.username} {self.proxy.ip}>'
