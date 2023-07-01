@@ -7,8 +7,8 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     ports:
-      - "${DB_PORT}:5432"
+      - "${DB_HOST}:5432"
   redis:
     image: redis
     ports:
-      - "${REDIS_PORT}:6379"
+      - "${REDIS_HOST}:6379"
