@@ -5,9 +5,9 @@ import (
 )
 
 type BaseModel struct {
-	ID        uint      `gorm:"primaryKey"`
-	CreatedAt time.Time `gorm:"autoCreateTime"`
-	UpdatedAt time.Time `gorm:"autoUpdateTime"`
+	ID        uint      `gorm:"primaryKey" json:"id"`
+	CreatedAt time.Time `gorm:"autoCreateTime" json:"created_at"`
+	UpdatedAt time.Time `gorm:"autoUpdateTime" json:"updated_at"`
 }
 
 type User struct {
@@ -22,7 +22,11 @@ type User struct {
 
 type Proxy struct {
 	BaseModel
-	Address    string `gorm:"not null"`
-	Port       int    `gorm:"not null"`
-	StillAlive bool   `gorm:"default:true"`
+	Address    string `gorm:"not null" json:"address"`
+	Port       int    `gorm:"not null" json:"port"`
+	StillAlive bool   `gorm:"default:true" json:"still_alive"`
+}
+
+func (Proxy) TableName() string {
+	return "proxy"
 }
