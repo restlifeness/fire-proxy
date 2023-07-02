@@ -5,8 +5,8 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from src.db.models import Base
-from src.db.utils import get_postgres_env_uri
+from src.database.models import Base
+from src.database.utils import get_postgres_env_uri
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
