@@ -12,6 +12,7 @@ func main() {
 
 	r.GET("/ping", routes.PingRoute)
 	r.POST("/auth", routes.AuthUserRoute)
+	r.GET("/proxies", routes.GetAllAliveProxies)
 
 	err := r.Run()
 	if err != nil {
