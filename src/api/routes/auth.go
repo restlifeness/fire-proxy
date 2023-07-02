@@ -1,10 +1,10 @@
 package routes
 
 import (
-	"github.com/restlifeness/fire-proxy.git/src/api/schemas"
-	"github.com/restlifeness/fire-proxy.git/src/api/services"
-
 	"github.com/gin-gonic/gin"
+	"github.com/restlifeness/fire-proxy.git/src/api/schemas"
+	"github.com/restlifeness/fire-proxy.git/src/api/security"
+	"github.com/restlifeness/fire-proxy.git/src/api/services"
 )
 
 func AuthUserRoute(ctx *gin.Context) {
@@ -27,8 +27,14 @@ func AuthUserRoute(ctx *gin.Context) {
 		return
 	}
 
-	simpleToken := "i_love_fire"
-	responseToken := schemas.NewBearerToken(simpleToken)
+	jwtToken, err := security.GenerateJWTToken(requestBody)
+
+	if err != nil {
+		ctx.JSON(500, gin.H{"error": err.Error()})
+		return
+	}
+
+	responseToken := schemas.NewBearerToken(jwtToken)
 
 	ctx.JSON(200, responseToken)
 }
