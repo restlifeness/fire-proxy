@@ -2,6 +2,7 @@ package database
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"gorm.io/driver/postgres"
@@ -61,7 +62,8 @@ func ConnectToDatabase() *gorm.DB {
 	dsn := getDNSFromEnv()
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
+		return nil
 	}
 	return db
 }
